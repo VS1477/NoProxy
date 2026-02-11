@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import { register } from '../api/auth';
 import AuthLayout from '../components/AuthLayout';
 
@@ -11,7 +10,6 @@ export default function Register() {
   const [role, setRole] = useState('student');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
-  const { login: setAuth } = useAuth();
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
@@ -19,9 +17,8 @@ export default function Register() {
     setError('');
     setLoading(true);
     try {
-      const res = await register({ name, email, password, role });
-      setAuth(res.data, res.data.token);
-      navigate('/dashboard');
+      await register({ name, email, password, role });
+      navigate('/login');
     } catch (err) {
       setError(err.response?.data?.message || 'Registration failed');
     } finally {
