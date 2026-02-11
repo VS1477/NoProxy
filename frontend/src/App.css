@@ -392,6 +392,19 @@ body {
   max-width: 1200px;
 }
 
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.page-header h1 {
+  margin: 0;
+}
+
 .page h1 {
   margin: 0 0 0.5rem;
   font-size: 1.75rem;

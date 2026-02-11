@@ -19,10 +19,22 @@ const app = express();
 
 // Middleware
 app.use(express.json({ limit: '10mb' })); // handle base64 images / embeddings
+const allowedOrigins = [
+  'http://localhost:5173',
+  'https://no-proxy-sigma.vercel.app'
+];
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:5173',
+  origin: function (origin, callback) {
+    if (!origin || allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
+
 app.use(morgan('dev'));
 
 // Static folder for any public assets (optional)

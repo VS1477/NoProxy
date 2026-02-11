@@ -14,8 +14,10 @@ export default function MySessions() {
 
   return (
     <div className="page">
-      <h1>My Sessions</h1>
-      <Link to="/teacher/sessions/new" className="btn btn-primary">Create New Session</Link>
+      <div className="page-header">
+        <h1>My Sessions</h1>
+        <Link to="/teacher/sessions/new" className="btn btn-primary">Create New Session</Link>
+      </div>
       {sessions.length === 0 ? (
         <p>No sessions yet.</p>
       ) : (
