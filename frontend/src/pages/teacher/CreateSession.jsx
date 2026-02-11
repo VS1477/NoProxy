@@ -70,8 +70,8 @@ export default function CreateSession() {
     try {
       await createSession({
         subject: form.subject,
-        startTime: form.startTime,
-        endTime: form.endTime,
+        startTime: new Date(form.startTime).toISOString(),
+        endTime: new Date(form.endTime).toISOString(),
         classroomLocation: { lat: Number(form.lat), lng: Number(form.lng) },
         radius: form.radius
       });
