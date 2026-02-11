@@ -21,6 +21,7 @@ export default function MyLogs() {
           <thead>
             <tr>
               <th>Subject</th>
+              <th>Teacher</th>
               <th>Time</th>
               <th>Status</th>
               <th>Distance (m)</th>
@@ -34,6 +35,7 @@ export default function MyLogs() {
               return (
               <tr key={log._id}>
                 <td>{log.sessionId?.subject}</td>
+                <td>{log.sessionId?.createdBy?.name || '-'}</td>
                 <td>{new Date(log.timestamp).toLocaleString()}</td>
                 <td><span className={`badge status-${effectiveStatus?.toLowerCase()}`}>{effectiveStatus}</span></td>
                 <td>{log.distanceFromClass?.toFixed(1)}</td>

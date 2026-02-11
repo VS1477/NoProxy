@@ -139,7 +139,7 @@ const getActiveSessions = async (req, res) => {
 const getMyLogs = async (req, res) => {
   try {
     const logs = await AttendanceLog.find({ studentId: req.user._id })
-      .populate('sessionId', 'subject startTime endTime')
+      .populate({ path: 'sessionId', select: 'subject startTime endTime createdBy', populate: { path: 'createdBy', select: 'name' } })
       .sort({ timestamp: -1 });
 
     res.json(logs);
