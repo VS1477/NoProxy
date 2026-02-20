@@ -1,7 +1,3 @@
-/**
- * Generate a simple device fingerprint from browser/device info.
- * Used to detect multiple accounts from same device.
- */
 export function getDeviceFingerprint() {
   const nav = navigator;
   const screen = window.screen;
